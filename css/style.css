@@ -1,64 +1,49 @@
 body {
-    background-color: rgb(146, 116, 150);
-    margin: 0;
+    background-color: rgb(3, 1, 37);
+    margin: 1rem 9rem;
     font-family: sans-serif;
 }
 
-.Container{
-    display: grid;
-    background-color: aqua;
-}
-
-.navbar{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 3rem;
-    font-weight: bold;
-    justify-self: end;
-    margin-right: 10rem;
-    margin-top: 2rem;
-}
-
-.navbar a{
-    padding: 0.5rem;
-    font-size: 1.2rem;
-}
-
-.navbar a:hover{
-    background-color: #ddd;
-    border-radius: 7px;
-}
-
-.logo{
-    font-size: 1.8rem;
-    font-weight:bold;
-    justify-self: left;
-}
-
 .header{
-    display: grid;
-    grid-template-columns: 2fr;
-    justify-items: center;
-    padding: 1rem;
-    gap: 1rem;
-    background-color: #f4f4f4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid #ddd;
 }
 
 .header a{
     text-decoration: none;
-    color: #333;
+    color: white;
 }
 
-@media (min-width: 768px){
-    .header{
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        padding: 1rem 2rem;
-    }
+.navbar{
+    justify-content: center;
+    gap: 3rem;
+    font-weight: bold;
+}
 
-    .navbar{
-        justify-self: end;
-    }
+.navbar nav a {
+    text-decoration: none;
+    margin-left: 3.6rem; 
+    font-size: 1.3rem;
+}
+
+.navbar nav a:hover {
+    color: #2108b1;
+}
+
+.logo a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12rem;
+}
+
+.main .texto{
+    color: white;
 }
