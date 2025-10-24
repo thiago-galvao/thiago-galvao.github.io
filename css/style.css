@@ -39,11 +39,24 @@ body {
 }
 
 .main {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 200px 200px;
+    grid-template-areas: "item1 item3"
+                        "item2 item3";
     margin-top: 12rem;
+    color: white;
+}
+
+.main .titulo{
+    grid-area: item1;
+}
+
+.main .imagem{
+    grid-area: item3;
 }
 
 .main .texto{
-    color: white;
+    grid-area: item2;
 }
+
