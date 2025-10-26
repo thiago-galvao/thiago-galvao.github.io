@@ -40,8 +40,8 @@ body {
 
 .main {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 200px 200px;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas: "item1 item3"
                         "item2 item3";
     margin-top: 12rem;
@@ -50,10 +50,57 @@ body {
 
 .main .titulo{
     grid-area: item1;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+@keyframes neon-flicker {
+    0%, 100%{
+        box-shadow:
+            0 0 5px #00FFFF,
+            0 0 10px #00FFFF,
+            0 0 15px #00FFFF,
+            0 0 25px #00FFFF;
+    }
+    50%{
+        box-shadow:
+            0 0 5px #00ffdd,
+            0 0 10px #00ffdd,
+            0 0 15px #00ffdd,
+            0 0 25px #00ffdd;;
+    }
+    70%{
+        box-shadow: 
+            0 0 5px #09ffff,
+            0 0 10px #09ffff;
+    }
 }
 
 .main .imagem{
     grid-area: item3;
+}
+
+.main .imagem img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+    box-shadow: 
+    0 0 5px #00FFFF,
+    0 0 10px #00FFFF,
+    0 0 15px #00FFFF,
+    0 0 25px #00FFFF;
+    transition: box-shadow 0.3 ease-in-out, border 0.3s ease-in-out;
+    animation: neon-flicker 2s linear infinite;
+}
+
+.main .imagem img:hover{
+    box-shadow: 
+        0 0 8px #44c9c9,
+        0 0 14px #44c9c9,
+        0 0 19px #44c9c9,
+        0 0 30px #44c9c9;
 }
 
 .main .texto{
