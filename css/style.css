@@ -2,108 +2,24 @@ body {
     background-color: rgb(3, 1, 37);
     margin: 1rem 9rem;
     font-family: sans-serif;
-}
-
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-}
-
-.header a{
-    text-decoration: none;
     color: white;
 }
 
-.navbar{
-    justify-content: center;
-    gap: 3rem;
-    font-weight: bold;
-}
-
-.navbar nav a {
-    text-decoration: none;
-    margin-left: 3.6rem; 
-    font-size: 1.3rem;
-}
-
-.navbar nav a:hover {
-    color: #2108b1;
-}
-
-.logo a {
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 3rem;
-}
-
-.main {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: "item1 item3"
-                        "item2 item3";
-    margin-top: 12rem;
+.header .navbar .container-fluid .menu{
     color: white;
+    list-style: none;
 }
 
-.main .titulo{
-    grid-area: item1;
-    font-size: 4rem;
-    font-weight: bold;
+.header {
+    background-color: rgb(3, 1, 37);
 }
 
-@keyframes neon-flicker {
-    0%, 100%{
-        box-shadow:
-            0 0 5px #00FFFF,
-            0 0 10px #00FFFF,
-            0 0 15px #00FFFF,
-            0 0 25px #00FFFF;
-    }
-    50%{
-        box-shadow:
-            0 0 5px #00ffdd,
-            0 0 10px #00ffdd,
-            0 0 15px #00ffdd,
-            0 0 25px #00ffdd;;
-    }
-    70%{
-        box-shadow: 
-            0 0 5px #09ffff,
-            0 0 10px #09ffff;
-    }
+.header .logo {
+    max-width: 400px;
+    height: auto;
+    width: auto;
 }
 
-.main .imagem{
-    grid-area: item3;
+nav {
+    background-color: rgb(3, 1, 37);
 }
-
-.main .imagem img{
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-    display: block;
-    border-radius: 50%;
-    box-shadow: 
-    0 0 5px #00FFFF,
-    0 0 10px #00FFFF,
-    0 0 15px #00FFFF,
-    0 0 25px #00FFFF;
-    transition: box-shadow 0.3 ease-in-out, border 0.3s ease-in-out;
-    animation: neon-flicker 2s linear infinite;
-}
-
-.main .imagem img:hover{
-    box-shadow: 
-        0 0 8px #44c9c9,
-        0 0 14px #44c9c9,
-        0 0 19px #44c9c9,
-        0 0 30px #44c9c9;
-}
-
-.main .texto{
-    grid-area: item2;
-}
-
