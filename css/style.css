@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(3, 1, 37);
+    background-color: rgb(4,9,38);
     margin: 1rem 9rem;
     font-family: sans-serif;
     color: white;
@@ -10,16 +10,45 @@ body {
     list-style: none;
 }
 
-.header {
-    background-color: rgb(3, 1, 37);
-}
-
 .header .logo {
     max-width: 400px;
     height: auto;
     width: auto;
 }
 
+
 nav {
+    background-color: rgb(4,9,38);
+}
+.main{
+    margin-top: 250px;
+}
+.main #sobremim {
+    scroll-margin-top: 56px;
     background-color: rgb(3, 1, 37);
 }
+
+:root {
+        --navbar-height: 70px; 
+        --primary-color: rgb(3, 1, 37); 
+        --button-bg-color: #6c757d;
+        --button-hover-color: #007bff; 
+    }
+    
+    #sobremim {
+        scroll-margin-top: var(--navbar-height);
+    }
+
+    .btn-custom {
+        background-color: var(--button-bg-color);
+        border-color: var(--button-bg-color);
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        background-color: var(--button-hover-color);
+        border-color: var(--button-hover-color);
+        color: white;
+        transform: translateY(-2px);
+    }

@@ -13,6 +13,9 @@
             <a href="#">
                 <img src=".\img\logo.png" alt="Logo do Laboratório Galvão" class="logo">
             </a>
+            <h3 class="fw-light mb-5">
+                Desenvolvedor em Formação | Transformando Ideias em Código
+            </h3>
         </div>
     </header>
     <nav class="navbar navbar-expand-lg sticky-top" data-bs-theme="dark">
@@ -36,23 +39,56 @@
         </div>
     </nav>
     <main class="main">
-        <div style="height: 500px;">
-        </div>
-        <div id="sobremim">
-            <div class="titulo">
-                Thiago Galvão
+        <section id="sobremim" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-4">
+                        <h1 class="display-4 fw-bold text-light">Thiago Galvão</h1>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center mb-5">
+                        <img src=".\img\foto_thiago.jpg" class="img-fluid rounded-circle shadow-lg" alt="Foto de Perfil do Thiago" style="max-width: 250px; height: 250px; object-fit: cover;">
+                    </div>
+                    <div class="col-12 text-center">
+                        <p class="lead text-light mx-auto" style="max-width: 800px;">
+                            Olá! Sou Thiago, um entusiasta de tecnologia e desenvolvedor em formação pelo Instituto Federal do Paraná.
+                            Este é o meu portfólio: um espaço onde transformo linhas de código em soluções reais.
+                            Aqui, você poderá explorar os projetos que venho construindo e acompanhar minha evolução.
+                            Seja muito bem-vindo(a) e fique à vontade para navegar!
+                        </p>
+                        <a href="#contato" class="btn btn-custom btn-lg mt-4">Entre em Contato</a>
+                    </div>
+                </div>
             </div>
-            <div class="texto">
-                <p>Olá! Eu sou o Thiago, um entusiasta de tecnologia e desenvolvedor em formação pelo Instituto Federal do Paraná.
-                    Este é o meu portfólio: um espaço onde transformo linhas de código em soluções reais. 
-                    Aqui, você poderá explorar os projetos que venho construindo e acompanhar minha evolução.<br>
-                    Seja muito bem-vindo(a) e fique à vontade para navegar!</p>
+        </section>
+        <section id="contato" class="py-5" style="background-color: rgb(3, 1, 37);">
+            <div class="container text-white">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class="display-4 fw-bold">Entre em Contato</h2>
+                        <p class="lead">Gostaria de discutir um projeto ou apenas dizer Olá? Me envie uma mensagem!</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-8 mb-5">
+                        <form class="mb-5">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Seu Nome</label>
+                                <input type="text" class="form-control" id="nome" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Seu Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensagem" class="form-label">Mensagem</label>
+                                <textarea class="form-control" id="mensagem" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="imagem">
-                <img src=".\img\foto_thiago.jpg">
-            </div>
-        </div>
-        <div id="contato" style="height: 1000px; background-color: black;"></div>
+        </section>
     </main>
     <footer>
     </footer>
