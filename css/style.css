@@ -4,7 +4,7 @@ body {
     color: white;
 }
 
-.header .navbar .container-fluid .menu{
+.header .navbar .container-fluid .menu {
     color: white;
     list-style: none;
 }
@@ -15,12 +15,25 @@ body {
 
 nav {
     background-color: rgb(4,9,38);
+    padding-top: 10px; 
+    padding-bottom: 10px;
 }
-.main{
+
+.navbar-nav .nav-link {
+    /* Aumenta o padding interno vertical dos links */
+    padding-top: 10px !important;
+    padding-bottom: 20px !important;
+    font-size: 1.1rem; /* Opcional: Aumenta um pouco o tamanho da fonte */
+}
+
+.main {
     margin-top: 250px;
 }
 .main #sobremim {
-    scroll-margin-top: 56px;
+    background-color: rgb(3, 1, 37);
+}
+
+.main #projetos {
     background-color: rgb(3, 1, 37);
 }
 
@@ -32,6 +45,18 @@ nav {
 }
     
 #sobremim {
+    scroll-margin-top: var(--navbar-height);
+}
+
+#habilidades {
+    scroll-margin-top: var(--navbar-height);
+}
+
+#projetos {
+    scroll-margin-top: var(--navbar-height);
+}
+
+#contato {
     scroll-margin-top: var(--navbar-height);
 }
 
@@ -61,12 +86,61 @@ nav {
     transition: all 0.3s ease;
 }
 
+.skill-block {
+    background-color: rgb(15, 20, 50); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.skill-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.skill-block h5 {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.skill-block li {
+    font-size: 1.1rem;
+    padding: 5px 0;
+}
+
+.skill-icon-small {
+    font-size: 1.2rem; 
+    width: 25px;
+    text-align: center;
+}
+
+body.light-mode .skill-block {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .skill-block h5 {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    color: #007bff !important; 
+}
+
+body.light-mode .skill-block li {
+    color: #333 !important;
+}
+
+
 body.light-mode {
     background-color: rgb(222, 230, 245) !important;
     color: #333;
 }
 
 body.light-mode .main #sobremim {
+    background-color: rgb(222, 230, 245) !important;
+}
+
+body.light-mode .main #projetos {
     background-color: rgb(222, 230, 245) !important;
 }
 
@@ -96,19 +170,18 @@ body.light-mode .theme-toggle .theme-icon {
     color: #333 !important;
 }
 
+body.light-mode .cursor { 
+    background-color: #333; 
+}
+
 body.light-mode .section-projects {
     background-color: rgb(222, 230, 245); 
-    color: #333; 
+    color: #333 !important; 
 }
 
 body.light-mode .project-card {
     background-color: white; 
     border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-body.light-mode .project-card .card-title,
-body.light-mode .project-card .card-text {
-    color: #333 !important;
 }
 
 body.light-mode .project-card:hover {
@@ -118,6 +191,30 @@ body.light-mode .project-card:hover {
 body.light-mode .badge.bg-primary {
     background-color: #007bff !important;
     color: white !important;
+}
+
+body.light-mode .project-card .card-title,
+body.light-mode .project-card .card-text {
+    color: #333 !important; 
+}
+
+
+body.light-mode .skill-icon {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #333; 
+}
+
+body.light-mode .skill-label {
+    color: #333; 
+}
+
+body.light-mode .skill-item:hover .skill-icon {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .horizontal-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .cursor {
@@ -135,10 +232,6 @@ body.light-mode .badge.bg-primary {
     50% { opacity: 0; }
 }
 
-body.light-mode .cursor { 
-    background-color: #333; 
-}
-
 .section-projects {
     color: white; 
 }
@@ -147,6 +240,11 @@ body.light-mode .cursor {
     background-color: rgb(15, 20, 50); 
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+}
+
+.project-card .card-title,
+.project-card .card-text {
+    color: white !important; 
 }
 
 .project-card:hover {

@@ -23,7 +23,6 @@ function loadSavedTheme() {
         themeIcon.className = 'bx bx-moon theme-icon';
     } else {
         body.classList.remove('light-mode');
-        hr.classList.remove('text-white');
         themeIcon.className = 'bx bx-sun theme-icon';
     }
 }
