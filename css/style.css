@@ -4,7 +4,6 @@ body {
     color: white;
 }
 
-
 .header .navbar .container-fluid .menu{
     color: white;
     list-style: none;
@@ -26,26 +25,136 @@ nav {
 }
 
 :root {
-        --navbar-height: 70px; 
-        --primary-color: rgb(3, 1, 37); 
-        --button-bg-color: #6c757d;
-        --button-hover-color: #007bff; 
-    }
+    --navbar-height: 70px; 
+    --primary-color: rgb(3, 1, 37); 
+    --button-bg-color: #6c757d;
+    --button-hover-color: #007bff; 
+}
     
-    #sobremim {
-        scroll-margin-top: var(--navbar-height);
-    }
+#sobremim {
+    scroll-margin-top: var(--navbar-height);
+}
 
-    .btn-custom {
-        background-color: var(--button-bg-color);
-        border-color: var(--button-bg-color);
-        color: white;
-        transition: all 0.3s ease;
-    }
+.btn-custom {
+    background-color: var(--button-bg-color);
+    border-color: var(--button-bg-color);
+    color: white;
+    transition: all 0.3s ease;
+}
 
-    .btn-custom:hover {
-        background-color: var(--button-hover-color);
-        border-color: var(--button-hover-color);
-        color: white;
-        transform: translateY(-2px);
-    }
+.btn-custom:hover {
+    background-color: var(--button-hover-color);
+    border-color: var(--button-hover-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.theme-toggle {
+    border-radius: 50% !important;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    transition: all 0.3s ease;
+}
+
+body.light-mode {
+    background-color: rgb(222, 230, 245) !important;
+    color: #333;
+}
+
+body.light-mode .main #sobremim {
+    background-color: rgb(222, 230, 245) !important;
+}
+
+body.light-mode .navbar {
+    background-color: rgb(222, 230, 245) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+body.light-mode .navbar .nav-link {
+    color: #333 !important;
+}
+
+body.light-mode .navbar-toggler {
+    filter: invert(1);
+}
+
+body.light-mode hr {
+    color: #333 !important;
+}
+
+body.light-mode .theme-toggle {
+    border: 2px solid #333 !important; 
+    background-color: transparent !important; 
+}
+
+body.light-mode .theme-toggle .theme-icon {
+    color: #333 !important;
+}
+
+body.light-mode .section-projects {
+    background-color: rgb(222, 230, 245); 
+    color: #333; 
+}
+
+body.light-mode .project-card {
+    background-color: white; 
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .project-card .card-title,
+body.light-mode .project-card .card-text {
+    color: #333 !important;
+}
+
+body.light-mode .project-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-mode .badge.bg-primary {
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+.cursor {
+    display: inline-block;
+    background-color: white;
+    width: 2px;
+    height: 1.2em; 
+    margin-left: 5px;
+    vertical-align: text-top; 
+    animation: blink 0.7s infinite; 
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+body.light-mode .cursor { 
+    background-color: #333; 
+}
+
+.section-projects {
+    color: white; 
+}
+
+.project-card {
+    background-color: rgb(15, 20, 50); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.project-card .card-img-top {
+    object-fit: cover;
+    height: 200px;
+}
