@@ -75,8 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const phrases = [
         "Desenvolvedor em Formação",
         "Transformando Ideias em Código",
-        "Desenvolvimento Front-end e Back-end",
-        "Paixão em Programação"
+        "Desenvolvimento WEB",
+        "Paixão por Programação",
+        "Professor de Informática"
     ];
 
     const element = document.getElementById('typing-text');
