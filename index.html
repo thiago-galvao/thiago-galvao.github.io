@@ -1,322 +1,436 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LabGalvão - Portifólio</title>
-    <link rel="icon" type="image/x-icon" href="./img/logo.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AtiveLitoral - Ativação da Tag Litoral</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Canvas Confetti para celebração -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBg: '#F8F5EE',
+            brandCard: '#FFFFFF',
+            brandNavy: '#16385C',
+            brandGreen: '#2B7A46',
+            brandGreenDark: '#205E35',
+            brandAmber: '#D99B47',
+            brandTeal: '#2FA8A8',
+            brandMuted: '#6B7280',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            subtle: '0 8px 30px rgba(22, 56, 92, 0.07)',
+            active: '0 12px 35px rgba(43, 122, 70, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #F8F5EE;
+      color: #1A2E3B;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Animação suave para as ondas NFC */
+    @keyframes pulseNfc {
+      0%, 100% { opacity: 0.35; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    .animate-nfc-waves {
+      animation: pulseNfc 2.2s infinite ease-in-out;
+    }
+
+    /* Gradiente com a borda customizada do card */
+    .brand-dual-border {
+      position: relative;
+      background: #FFFFFF;
+      border-radius: 1.5rem;
+      border: 2px solid #16385C;
+    }
+    .brand-dual-border::before {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 1.65rem;
+      padding: 3px;
+      background: linear-gradient(135deg, #16385C 0%, #D99B47 48%, #2B7A46 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+  </style>
 </head>
-<body>
-    <header class="header">
-        <div class="container-fluid text-center">
-            <a href="#">
-                <img src=".\img\logo.png" alt="Logo do Laboratório Galvão" class="logo">
-            </a>
-            <h3 class="fw-light mb-5">
-            <span id="typing-text"></span>
-            <span class="cursor"></span>
-        </h3>
+<body class="font-sans min-h-screen flex flex-col items-center justify-start p-3 sm:p-5 select-none">
+
+  <!-- Container Mobile Centralizado -->
+  <main class="w-full max-w-[420px] bg-brandBg min-h-screen flex flex-col justify-between py-2 sm:py-4">
+
+    <!-- Header com Logomarca Oficial AtiveLitoral -->
+    <header class="flex flex-col items-center text-center pt-2 pb-3">
+      <div class="flex items-center gap-2.5">
+        <!-- Ícone Vetorial SVG da Marca (Infinito, Onda e Broto Ecológico) -->
+        <svg class="w-9 h-9" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ícone NFC topo -->
+          <path d="M42 16C46.5 13 53.5 13 58 16" stroke="#16385C" stroke-width="3" stroke-linecap="round"/>
+          <path d="M45 21C47.8 19 52.2 19 55 21" stroke="#16385C" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="50" cy="26" r="2" fill="#16385C"/>
+          <!-- Folhas topo -->
+          <path d="M38 18C33 13 25 15 25 21C31 23 37 21 38 18Z" fill="#2B7A46"/>
+          <path d="M62 18C67 13 75 15 75 21C69 23 63 21 62 18Z" fill="#2B7A46"/>
+          <!-- Emblema do Infinito estilizado -->
+          <path d="M35 34C24 34 16 42 16 53C16 64 25 72 36 72C46 72 50 62 50 62C50 62 54 72 64 72C75 72 84 64 84 53C84 42 76 34 65 34C56 34 50 44 50 44C50 44 44 34 35 34Z" stroke="#16385C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Onda Caiçara (Lado Esquerdo) -->
+          <path d="M22 55C25 50 30 48 35 52C39 55 42 50 44 47" stroke="#2FA8A8" stroke-width="4" stroke-linecap="round"/>
+          <!-- Broto Ecológico (Lado Direito) -->
+          <path d="M64 61V49M64 53C61 50 56 52 56 55C60 56 63 55 64 53ZM64 50C67 47 72 49 72 52C68 53 65 52 64 50Z" stroke="#2B7A46" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Base tramada caiçara -->
+          <path d="M30 76L40 86M40 76L50 86M50 76L60 86M60 76L70 86" stroke="#D99B47" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+
+        <div class="text-left leading-none">
+          <span class="text-2xl font-black tracking-tight text-brandNavy">Ative<span class="text-brandGreen">Litoral</span></span>
         </div>
+      </div>
+      <p class="text-[9.5px] font-bold tracking-[0.22em] text-gray-700 uppercase mt-1.5">
+        Turismo • Economia Circular • Comunidade
+      </p>
+
+      <!-- Badge de Leitura NFC e ID do Chip -->
+      <div class="mt-3 inline-flex items-center justify-center gap-2 bg-white/90 backdrop-blur-sm border border-emerald-100 rounded-full py-1 px-3.5 shadow-sm">
+        <svg class="w-3.5 h-3.5 text-brandGreen animate-nfc-waves" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 18h.01M8.5 14.5A5 5 0 0115.5 14.5M5.5 11.5A9 9 0 0118.5 11.5M2.5 8.5A13 13 0 0121.5 8.5"/>
+        </svg>
+        <span class="text-[11px] font-semibold text-gray-700">
+          <strong class="text-brandNavy">Tag Litoral</strong>
+        </span>
+        <span class="text-[9.5px] font-mono bg-emerald-50 text-brandGreen px-1.5 py-0.5 rounded font-bold border border-emerald-200">
+          #GQB-4412
+        </span>
+      </div>
     </header>
-    <hr class="text-white"> 
-    <nav class="navbar navbar-expand-lg sticky-top" data-bs-theme="dark">
-        <div class="container-fluid justify-content-center">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarToggleExternalContent">
-                <div class="navbar-nav text-center">
-                    <a class="nav-link active" aria-current="true" href="#">Início</a>
-                    <a class="nav-link active" aria-current="true" href="#sobremim">Sobre mim</a>
-                    <a class="nav-link active" aria-current="true" href="#habilidades">Habilidades</a>
-                    <a class="nav-link active" aria-current="true" href="#projetos">Portifólio</a>
-                    <a class="nav-link active" aria-current="true" href="#contato">Contato</a>
-                </div>
-            </div>
+
+    <!-- ETAPA 1: Identificação e Busca da Compra no Banco -->
+    <section id="step1" class="flex flex-col">
+      <div class="brand-dual-border p-5 text-center shadow-subtle mb-4 bg-white">
+        <div class="w-12 h-12 mx-auto rounded-full bg-emerald-50 flex items-center justify-center text-brandGreen mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+          </svg>
         </div>
-    </nav>
-    <div class="d-flex justify-content-center pt-2">
-        <button id="themeToggle" class="btn btn-outline-light theme-toggle" type="button" title="Alternar tema">
-            <i class="bx bx-sun theme-icon"></i>
-        </button> 
-    </div>
-    <main class="main">
-        <section id="sobremim" class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 text-center mb-4">
-                        <h1 class="display-4 fw-bold">Thiago Galvão</h1>
-                    </div>
-                    <div class="row d-flex justify-content-center mb-5">
-                        <div class="col-8 col-md-4 col-lg-3">
-                            <img src=".\img\foto.jpg" class="img-fluid rounded-circle shadow-lg" alt="Foto de Perfil do Thiago">
-                        </div>
-                    </div>
-                    <div class="col-12 text-center">
-                        <p class="lead mx-auto">
-                            Olá! Sou Thiago, um entusiasta de tecnologia e desenvolvedor em formação pelo Instituto Federal do Paraná.
-                            Este é o meu portfólio: um espaço onde transformo linhas de código em soluções reais.
-                            Aqui, você poderá explorar os projetos que venho construindo e acompanhar minha evolução.
-                            Seja muito bem-vindo(a) e fique à vontade para navegar!
-                        </p>
-                        <a href="#contato" class="btn btn-custom btn-lg mt-4">Entre em Contato</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="habilidades" class="py-5">
-            <div class="container">
-                <div class="row mb-5">
-                    <div class="col-12 text-center">
-                        <h2 class="display-4 fw-bold">Minhas Habilidades</h2>
-                        <p class="lead">Ferramentas e tecnologias que utilizo.</p>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="p-3 skill-block shadow-sm">
-                            <h5 class="fw-bold text-primary"><i class="fas fa-code me-2"></i> Linguagens & Markup</h5>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fab fa-html5 skill-icon-small me-2 html-color"></i> HTML5</li>
-                                <li class="mb-2"><i class="fab fa-css3-alt skill-icon-small me-2 css-color"></i> CSS3</li>
-                                <li class="mb-2"><i class="fab fa-js-square skill-icon-small me-2 js-color"></i> JavaScript</li>
-                                <li class="mb-2"><i class="fab fa-java skill-icon-small me-2 java-color"></i> Java</li>
-                                <li class="mb-2"><i class="fab fa-python skill-icon-small me-2 java-color"></i> Python</li>
-                                <li class="mb-2"><i class="fas fa-database skill-icon-small me-2 sql-color"></i> MySQL</li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="p-3 skill-block shadow-sm">
-                            <h5 class="fw-bold text-primary"><i class="fas fa-tools me-2"></i> Frameworks & Ferramentas</h5>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fab fa-bootstrap skill-icon-small me-2 bootstrap-color"></i> Bootstrap (Design Responsivo)</li>
-                                <li class="mb-2"><i class="fab fa-git-alt skill-icon-small me-2 git-color"></i> Git</li>
-                                <li class="mb-2"><i class="fab fa-github skill-icon-small me-2 github-color"></i> GitHub</li>
-                                <li class="mb-2"><i class="fas fa-server skill-icon-small me-2"></i> Javalin (Backend)</li>
-                            </ul>
-                        </div>
-                    </div>
+        <h1 class="text-lg font-extrabold text-brandNavy leading-snug">
+          Vincular Tag Litoral
+        </h1>
+        <p class="text-[12px] text-gray-600 mt-1.5 px-2 leading-relaxed">
+          Para ativar seu acesso e desbloquear o clube de benefícios, informe o e-mail ou CPF usado na compra do plano.
+        </p>
 
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="p-3 skill-block shadow-sm">
-                            <h5 class="fw-bold text-primary"><i class="fas fa-lightbulb me-2"></i> Conceitos Chave</h5>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-layer-group skill-icon-small me-2"></i> Paradigma Orientado a Objetos (POO)</li>
-                                <li class="mb-2"><i class="fas fa-sitemap skill-icon-small me-2"></i> Estrutura de Dados</li>
-                                <li class="mb-2"><i class="fas fa-cube skill-icon-small me-2"></i> CRUD (Criação, Leitura, Atualização, Exclusão)</li>
-                                <li class="mb-2"><i class="fas fa-shield-alt skill-icon-small me-2"></i> Boas Práticas de Código</li>
-                                <li class="mb-2"><i class="fa-regular fa-file-code skill-icon-small me-2"></i> Design Pattern em Java</li>
-                            </ul>
-                        </div>
-                    </div>
+        <!-- Formulário de Localização -->
+        <form id="formBusca" onsubmit="buscarCadastro(event)" class="mt-4 text-left space-y-3">
+          <div>
+            <label class="block text-[11px] font-bold text-gray-700 mb-1">E-mail ou CPF do Assinante</label>
+            <input 
+              type="text" 
+              id="inputIdentificador" 
+              required
+              placeholder="ex: cliente.teste@email.com ou 123.456.789-00" 
+              value="cliente.teste@email.com"
+              class="w-full text-xs sm:text-sm px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brandGreen focus:border-brandGreen outline-none text-gray-800 transition-all font-medium"
+            />
+          </div>
 
-                </div>
-            </div>
-        </section>
-        <section id="projetos" class="py-5 section-projects">
-            <div class="container">
-                <div class="row mb-5">
-                    <div class="col-12 text-center">
-                        <h2 class="display-4 fw-bold">Meus Projetos</h2>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card shadow-lg">
-                            <img src="./img/home_burguer.png" class="card-img-top" alt="Imagem do Projeto 1">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Dom Pedro's Burguer</h5>
-                                <p class="card-text">Sistema WEB simples feito com Javalin para gerenciamento de pedidos de hamburguearia.</p>
-                                
-                                <div class="mt-2 mb-3">
-                                    <span class="badge bg-warning me-1">Java</span>
-                                    <span class="badge bg-danger me-1">MySQL</span>
-                                    <span class="badge bg-primary me-1">HTML</span>
-                                    <span class="badge bg-info me-1">CSS</span>
-                                    <span class="badge bg-warning me-1">JS</span>
-                                </div>
-                                
-                                <div class="mt-auto">
-                                    <a href="https://github.com/thiago-galvao/dompedroburguer/tree/main/application/dompedroburguer" target="_blank" class="btn btn-sm btn-custom me-2">Ver Código</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row mt-5">
-                    <div class="col-12 text-center">
-                        <a href="https://github.com/thiago-galvao" target="_blank" class="btn btn-custom btn-lg">Veja todos os projetos no GitHub</a>
-                    </div>
-                </div>
-                
-                <div class="row mt-5 mb-5">
-                    <div class="col-12 text-center">
-                        <h2 class="display-4 fw-bold">Materiais de Aula</h2>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card shadow-lg">
-                            <img src="./img/imgem_excel_icone.png" class="card-img-top" alt="Download Planilha Excel">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Planilha 1</h5>
-                                <p class="card-text">Planilha com dados fictícios de vendas para análise e manipulação para a aula de Excel.</p>
-                                <div class="mt-auto">
-                                    <a href="./arquivos/dados_vendas.xlsx" download="Minha_Planilha_Dados.xlsx" class="btn btn-sm btn-custom me-2">
-                                        <i class="bi bi-download"></i> Baixar Planilha
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card shadow-lg">
-                            <img src="./img/imgem_excel_icone.png" class="card-img-top" alt="Download Planilha Excel">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Planilha 2</h5>
-                                <p class="card-text">Planilha com dados fictícios de vendas por região para análise e manipulação para a aula de Excel.</p>
-                                <div class="mt-auto">
-                                    <a href="./arquivos/vendas_regiao.xlsx" download="Minha_Planilha_Dados.xlsx" class="btn btn-sm btn-custom me-2">
-                                        <i class="bi bi-download"></i> Baixar Planilha
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card shadow-lg">
-                            <img src="./img/imgem_excel_icone.png" class="card-img-top" alt="Download Planilha Excel">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Planilha 3</h5>
-                                <p class="card-text">Planilha básica para treinamento de inserção/exclusão de colunas e linhas.</p>
-                                <div class="mt-auto">
-                                    <a href="./arquivos/tabela_basica.xlsx" download="Minha_Planilha_Dados.xlsx" class="btn btn-sm btn-custom me-2">
-                                        <i class="bi bi-download"></i> Baixar Planilha
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card shadow-lg">
-                            <img src="./img/imgem_excel_icone.png" class="card-img-top" alt="Download Planilha Excel">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Excel 2 - Planilha 1</h5>
-                                <p class="card-text">Planilha com dados fictícios de vendas e produtos para realização das atividades em sala.</p>
-                                <div class="mt-auto">
-                                    <a href="./arquivos/relatorio_dinamico_vendas.xlsx" download="Minha_Planilha_Dados.xlsx" class="btn btn-sm btn-custom me-2">
-                                        <i class="bi bi-download"></i> Baixar Planilha
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 project-card shadow-lg">
-                            <img src="./img/imgem_excel_icone.png" class="card-img-top" alt="Download Planilha Excel">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Excel 2 - Planilha 2</h5>
-                                <p class="card-text">Planilha com dados fictícios de vendas e produtos para realização das atividades em sala.</p>
-                                <div class="mt-auto">
-                                    <a href="./arquivos/gestao_atendimentos_clinicos.xlsx" download="Minha_Planilha_Dados.xlsx" class="btn btn-sm btn-custom me-2">
-                                        <i class="bi bi-download"></i> Baixar Planilha
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="contato" class="py-5">
-            <div class="container">
-                <div class="row mb-5">
-                    <div class="col-12 text-center">
-                        <h2 class="display-4 fw-bold">Entre em Contato</h2>
-                        <p class="lead">Gostaria de discutir um projeto ou apenas dizer Olá? Me envie uma mensagem!</p>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 col-md-8 mb-5">
-                        <form id="contactForm"  method="POST" action="https://api.web3forms.com/submit" class="mb-5">
-                            <input type="hidden" name="access_key" value="fd5b03db-60ea-45d7-a99d-0f2247d0d436">
-                            <div class="mb-3">
-                                <label for="nome" class="form-label">Seu Nome</label>
-                                <input type="text" class="form-control" id="nome" name="Nome" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Seu Email</label>
-                                <input type="email" class="form-control" id="email" name="_replyto" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="mensagem" class="form-label">Mensagem</label>
-                                <textarea class="form-control" id="mensagem" rows="4" name="Mensagem" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg w-100">Enviar Mensagem</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+          <!-- Sugestão rápida de teste -->
+          <div class="flex items-center justify-between text-[10.5px] text-gray-700 px-0.5">
+            <span>Dica para teste: já preenchido</span>
+            <button type="button" onclick="document.getElementById('inputIdentificador').value='cliente.teste@email.com'" class="text-brandGreen font-bold underline">cliente.teste@email.com</button>
+          </div>
 
+          <button 
+            type="submit" 
+            id="btnBuscar"
+            class="w-full bg-brandNavy hover:bg-slate-800 active:scale-[0.98] transition-all text-white font-bold text-[13.5px] py-3 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 mt-2"
+          >
+            <span id="btnBuscarText">LOCALIZAR MINHA COMPRA</span>
+            <svg id="btnBuscarSpinner" class="hidden w-4 h-4 animate-spin text-white" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+            </svg>
+          </button>
+        </form>
 
-
-    <footer>
-        <div class="footer-custom py-4 py-md-5">
-            <div class="container">
-                <div class="row text-center text-md-start">
-                    
-                    <div class="col-md-4 mb-4 mb-md-0">
-                        <h5 class="fw-bold text-uppercase mb-3">LabGalvão</h5>
-                        <p class="text-white-50">Transformando ideias em código.</p>
-                        <p class="mb-0">
-                            <i class="fas fa-envelope me-2"></i> thiago-correia_@hotmail.com
-                        </p>
-                    </div>
-                    
-                    <div class="col-md-4 mb-4 mb-md-0">
-                        <h5 class="fw-bold text-uppercase mb-3">Navegação</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="text-white-50 text-decoration-none">Início</a></li>
-                            <li><a href="#sobremim" class="text-white-50 text-decoration-none">Sobre mim</a></li>
-                            <li><a href="#projetos" class="text-white-50 text-decoration-none">Portifólio</a></li>
-                            <li><a href="#contato" class="text-white-50 text-decoration-none">Contato</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4 text-center text-md-start">
-                        <h5 class="fw-bold text-uppercase mb-3">Conecte-se</h5>
-                        <div class="social-icons">
-                            <a href="https://www.linkedin.com/in/thiagoo-galvao" target="_blank" class="social-link me-3" title="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
-                            <a href="https://github.com/thiago-galvao" target="_blank" class="social-link me-3" title="GitHub"><i class="fab fa-github fa-2x"></i></a>
-                            <a href="https://www.facebook.com/thiago.correia.1238292/" target="_blank" class="social-link me-3" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
-                            <a href="https://www.instagram.com/thiagoo.galvao/" target="_blank" class="social-link" title="Instagram"><i class="fab fa-instagram fa-2x"></i></a>
-                        </div>
-                        <p class="mt-3 text-white-50 small">Desenvolvimento front-end e back-end.</p>
-                    </div>
-                </div>
-                
-                <hr class="my-4 text-white-50">
-
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p class="text-white-50 small mb-0">&copy; <span id="currentYear"></span> Thiago Galvão | Todos os direitos reservados.</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Links Auxiliares -->
+        <div class="mt-4 pt-3 border-t border-gray-100 flex flex-col gap-1 text-[11.5px] text-gray-700">
+          <span>Ainda não assinou o clube? <a href="#" class="text-brandGreen font-bold hover:underline">Comprar passaporte</a></span>
+          <span>Dúvidas com o pedido? <a href="#" class="text-brandNavy font-semibold hover:underline">Falar com suporte</a></span>
         </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 2: Confirmação dos Dados Encontrados -->
+    <section id="step2" class="hidden flex-col">
+      <div class="brand-dual-border p-5 text-center shadow-subtle mb-4 bg-white">
+        <div class="w-12 h-12 mx-auto rounded-full bg-emerald-50 flex items-center justify-center text-brandGreen mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+
+        <span class="inline-block bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full mb-1.5">
+          Assinatura Localizada
+        </span>
+
+        <h2 class="text-lg font-black text-brandNavy">
+          Confirme seus dados
+        </h2>
+        <p class="text-[11.5px] text-gray-700 mt-1">
+          Encontramos o seu plano no nosso sistema:
+        </p>
+
+        <!-- Card Resumo do Cliente -->
+        <div class="mt-3 p-3 bg-gray-50 border border-gray-200/80 rounded-xl text-left space-y-2 text-xs">
+          <div class="flex justify-between items-center pb-1.5 border-b border-gray-200">
+            <span class="text-gray-700 font-medium">Titular:</span>
+            <strong id="displayNome" class="text-brandNavy font-bold">Cliente Teste</strong>
+          </div>
+          <div class="flex justify-between items-center pb-1.5 border-b border-gray-200">
+            <span class="text-gray-700 font-medium">Plano Contratado:</span>
+            <strong class="text-brandGreen font-bold">Passaporte Guaraqueçaba Anual</strong>
+          </div>
+          <div class="flex justify-between items-center pb-1.5 border-b border-gray-200">
+            <span class="text-gray-700 font-medium">Pulseira Física:</span>
+            <span class="font-mono font-bold text-brandGreen">Guaraqueçaba (#GQB-4412)</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-gray-700 font-medium">Status do Token:</span>
+            <span class="text-amber-700 font-bold bg-amber-100/60 px-2 py-0.5 rounded text-[10.5px]">Aguardando Vinculação</span>
+          </div>
+        </div>
+
+        <!-- Botão de Confirmação e Ativação -->
+        <button 
+          id="btnConfirmar"
+          onclick="confirmarVinculacao()" 
+          class="w-full bg-brandGreen hover:bg-brandGreenDark active:scale-[0.98] transition-all duration-200 text-white font-bold text-[14px] py-3.5 px-5 rounded-xl shadow-active flex items-center justify-center gap-2 mt-4"
+        >
+          <span id="btnConfirmarText">CONFIRMAR E VINCULAR PULSEIRA</span>
+          <svg id="btnConfirmarSpinner" class="hidden w-4 h-4 animate-spin text-white" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+          </svg>
+        </button>
+
+        <button type="button" onclick="voltarParaBusca()" class="mt-3 text-[11px] text-gray-700 font-semibold hover:underline">
+          ← Não é a sua conta? Buscar outro e-mail
+        </button>
+      </div>
+    </section>
+
+    <!-- ETAPA 3: Sucesso e Passaporte Guaraqueçaba Ativo -->
+    <section id="step3" class="hidden flex-col">
+      <!-- Mensagem de Sucesso -->
+      <div class="text-center px-2 mb-3">
+        <h1 class="text-[21px] font-extrabold text-brandNavy leading-tight tracking-tight">
+          Pronto, <span id="welcomeUserName">Cliente Teste</span>! 🎉
+        </h1>
+        <p class="text-[12px] text-gray-600 mt-1">
+          Sua Tag Litoral Verde agora está vinculada e ativa para uso imediato em Guaraqueçaba!
+        </p>
+      </div>
+
+      <!-- Carteirinha Digital de Guaraqueçaba Ativada -->
+      <div class="brand-dual-border p-4 text-center shadow-subtle mb-4 bg-white relative">
+        <div class="flex justify-between items-center mb-2 px-1">
+          <span class="bg-brandGreen text-white text-[10px] font-bold tracking-wide uppercase px-2.5 py-0.5 rounded-full">
+            Passaporte Guaraqueçaba Ativo
+          </span>
+          <span class="text-[10px] font-mono font-bold text-brandGreen bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+            ● TOKEN VINCULADO
+          </span>
+        </div>
+
+        <div class="p-3 bg-gradient-to-br from-emerald-950 via-slate-900 to-brandNavy rounded-xl text-white text-left shadow-sm mb-3">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-[10px] text-emerald-300 font-semibold tracking-wider uppercase">Clube AtiveLitoral</p>
+              <p class="text-sm font-black tracking-tight" id="cardTitular">Cliente Teste</p>
+            </div>
+            <svg class="w-6 h-6 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <div class="flex justify-between items-end mt-3 pt-2 border-t border-slate-700/80 text-[10.5px]">
+            <div>
+              <span class="text-slate-400 block text-[9px]">TAG NFC ID</span>
+              <span class="font-mono font-bold text-emerald-300">#GQB-4412-VERDE</span>
+            </div>
+            <div class="text-right">
+              <span class="text-slate-400 block text-[9px]">VALIDADE</span>
+              <span class="font-medium text-slate-200">12 meses</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-[11.5px] text-gray-600 mb-3 px-1 leading-snug">
+          Basta aproximar a sua pulseira verde do celular do atendente ou barqueiro credenciado para liberar cortesias e benefícios ecológicos.
+        </p>
+
+        <!-- Grid de Benefícios Desbloqueados em Guaraqueçaba -->
+        <div class="grid grid-cols-3 gap-2 text-center text-gray-800">
+          <div class="p-2 rounded-lg bg-emerald-50 border border-emerald-100 flex flex-col items-center">
+            <span class="text-[11px] font-bold">Trilhas</span>
+            <span class="text-[9.5px] text-brandGreen font-medium mt-0.5">Guias Caiçaras</span>
+          </div>
+          <div class="p-2 rounded-lg bg-sky-50 border border-sky-100 flex flex-col items-center">
+            <span class="text-[11px] font-bold">Travessias</span>
+            <span class="text-[9.5px] text-brandNavy font-medium mt-0.5">Barcos Nativos</span>
+          </div>
+          <div class="p-2 rounded-lg bg-amber-50 border border-amber-100 flex flex-col items-center">
+            <span class="text-[11px] font-bold">Pousadas</span>
+            <span class="text-[9.5px] text-amber-800 font-medium mt-0.5">Eco-Hospedagem</span>
+          </div>
+        </div>
+
+        <button onclick="reiniciarSimulacao()" class="mt-4 text-[11px] text-gray-700 font-semibold hover:text-brandNavy transition-colors flex items-center justify-center gap-1 mx-auto">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+          Simular ativação de outra pulseira
+        </button>
+      </div>
+    </section>
+
+    <!-- Rodapé de Impacto Socioambiental & Parceria ACPPP -->
+    <footer class="mt-auto pt-3 border-t border-gray-200/80">
+      <div class="bg-white/70 rounded-xl p-3 border border-emerald-100 flex items-center gap-3">
+        <!-- Emblema ACPPP Couro de Peixe -->
+        <div class="w-10 h-10 rounded-lg bg-emerald-50 border border-emerald-200 flex flex-col items-center justify-center shrink-0">
+          <svg class="w-5 h-5 text-brandGreen" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12c4-8 12-8 16 0-4 8-12 8-16 0z"/>
+            <circle cx="15" cy="12" r="1.5" fill="currentColor"/>
+          </svg>
+          <span class="text-[8px] font-black text-brandNavy leading-none">ACPPP</span>
+        </div>
+
+        <p class="text-[11px] text-gray-600 leading-tight">
+          A cada pulseira ativada, você apoia as artesãs da <strong>ACPPP</strong> e contribui para o <strong class="text-brandGreen">descarte zero</strong> da pesca na baía.
+        </p>
+
+        <!-- Selo de Economia Circular -->
+        <div class="shrink-0 text-brandGreen">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="text-center mt-2.5">
+        <span class="text-[9.5px] text-gray-700 font-semibold tracking-wider">
+          ATIVELITORAL • SISTEMA DE VINCULAÇÃO NFC PHYGITAL
+        </span>
+      </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./js/script.js"></script>
+  </main>
+
+  <!-- Lógica das Etapas de Vinculação -->
+  <script>
+    let clienteAtual = {
+      nome: "Cliente Teste",
+      email: "cliente.teste@email.com",
+      plano: "Passaporte Guaraqueçaba Anual",
+      tagId: "GQB-4412-VERDE"
+    };
+
+    function buscarCadastro(event) {
+      event.preventDefault();
+      const input = document.getElementById('inputIdentificador').value.trim();
+      const btn = document.getElementById('btnBuscar');
+      const btnText = document.getElementById('btnBuscarText');
+      const btnSpinner = document.getElementById('btnBuscarSpinner');
+
+      btn.disabled = true;
+      btnText.innerText = "LOCALIZANDO NO BANCO...";
+      btnSpinner.classList.remove('hidden');
+
+      setTimeout(() => {
+        if (input.includes('@') && !input.startsWith('cliente.teste')) {
+          const nomeParte = input.split('@')[0];
+          clienteAtual.nome = nomeParte.charAt(0).toUpperCase() + nomeParte.slice(1);
+          clienteAtual.email = input;
+        } else if (input.startsWith('cliente.teste')) {
+          clienteAtual.nome = "Cliente Teste";
+          clienteAtual.email = "cliente.teste@email.com";
+        }
+
+        document.getElementById('displayNome').innerText = clienteAtual.nome;
+        document.getElementById('cardTitular').innerText = clienteAtual.nome;
+        document.getElementById('welcomeUserName').innerText = clienteAtual.nome;
+
+        // Transição para o Step 2
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('step2').classList.remove('hidden');
+
+        btn.disabled = false;
+        btnText.innerText = "LOCALIZAR MINHA COMPRA";
+        btnSpinner.classList.add('hidden');
+      }, 700);
+    }
+
+    function voltarParaBusca() {
+      document.getElementById('step2').classList.add('hidden');
+      document.getElementById('step1').classList.remove('hidden');
+    }
+
+    function confirmarVinculacao() {
+      const btn = document.getElementById('btnConfirmar');
+      const btnText = document.getElementById('btnConfirmarText');
+      const btnSpinner = document.getElementById('btnConfirmarSpinner');
+
+      btn.disabled = true;
+      btnText.innerText = "VINCULANDO TAG...";
+      btnSpinner.classList.remove('hidden');
+
+      setTimeout(() => {
+        // Transição para o Step 3 (Sucesso)
+        document.getElementById('step2').classList.add('hidden');
+        document.getElementById('step3').classList.remove('hidden');
+
+        // Celebração de sucesso
+        confetti({
+          particleCount: 85,
+          spread: 75,
+          origin: { y: 0.6 },
+          colors: ['#16385C', '#2B7A46', '#D99B47', '#2FA8A8']
+        });
+      }, 800);
+    }
+
+    function reiniciarSimulacao() {
+      document.getElementById('step3').classList.add('hidden');
+      document.getElementById('step2').classList.add('hidden');
+      document.getElementById('step1').classList.remove('hidden');
+      
+      const btnConf = document.getElementById('btnConfirmar');
+      btnConf.disabled = false;
+      document.getElementById('btnConfirmarText').innerText = "CONFIRMAR E VINCULAR PULSEIRA";
+      document.getElementById('btnConfirmarSpinner').classList.add('hidden');
+    }
+  </script>
 </body>
 </html>
